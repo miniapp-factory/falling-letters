@@ -28,7 +28,7 @@ export default function FallingLetters() {
 
   // Spawn a new letter every 800ms
   useEffect(() => {
-    if (gameOver) return;
+    if (gameOver || paused) return;
     const interval = setInterval(() => {
       const newLetter: Letter = {
         id: idRef.current++,
@@ -43,7 +43,7 @@ export default function FallingLetters() {
 
   // Move letters
   useEffect(() => {
-    if (gameOver) return;
+    if (gameOver || paused) return;
     const animation = setInterval(() => {
       setLetters((prev) =>
         prev
@@ -76,9 +76,12 @@ export default function FallingLetters() {
   // Game over detection
   useEffect(() => {
     if (letters.some((l) => l.top >= 580)) {
+      setLives((prev) => prev - 1);
+    }
+    if (lives <= 0) {
       setGameOver(true);
     }
-  }, [letters]);
+  }, [letters, lives]);
 
   const handleLetter = (letter: string) => {
     const idx = letters.findIndex((l) => l.char === letter);
@@ -86,6 +89,14 @@ export default function FallingLetters() {
     setScore((s) => s + 10 * multiplier);
     setMultiplier((m) => m + 1);
     setLetters((prev) => prev.filter((_, i) => i !== idx));
+  };
+
+  const resetGame = () => {
+    setLetters([]);
+    setScore(0);
+    setMultiplier(1);
+    setLives(3);
+    setGameOver(false);
   };
 
   return (
@@ -123,6 +134,20 @@ export default function FallingLetters() {
         )}
       ))}
       <div className="absolute inset-0 flex flex-col justify-between p-4">
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center gap-1">
+            {Array.from({ length: lives }).map((_, i) => (
+              <Heart key={i} className="w-5 h-5 text-red-500" />
+            ))}
+          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setPaused((p) => !p)}
+          >
+            {paused ? "Resume" : "Pause"}
+          </Button>
+        </div>
         <div className="text-white text-lg">
           Score: {score}  Multiplier: x{multiplier}
         </div>
