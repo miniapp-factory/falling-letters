@@ -22,24 +22,30 @@ export default function FallingLetters() {
   const [gameOver, setGameOver] = useState(false);
   const [lives, setLives] = useState(3);
   const [paused, setPaused] = useState(false);
+  const [practiceMode, setPracticeMode] = useState(false);
+  const [speedMultiplier, setSpeedMultiplier] = useState(1);
+  const [removedLetters, setRemovedLetters] = useState<
+    { id: number; top: number; left: number }[]
+  >([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const idRef = useRef(0);
 
-  // Spawn a new letter every 800ms
+  // Spawn a new letter every 800ms (only when no letters are present)
   useEffect(() => {
     if (gameOver || paused) return;
+    if (letters.length > 0) return;
     const interval = setInterval(() => {
       const newLetter: Letter = {
         id: idRef.current++,
         char: LETTERS[Math.floor(Math.random() * LETTERS.length)],
         top: -20,
-        speed: 1 + Math.random() * 2,
+        speed: (1 + Math.random() * 2) * speedMultiplier,
       };
       setLetters((prev) => [...prev, newLetter]);
-    }, 800);
+    }, practiceMode ? 1200 : 800);
     return () => clearInterval(interval);
-  }, [gameOver, paused]);
+  }, [gameOver, paused, letters.length, practiceMode, speedMultiplier]);
 
   // Move letters
   useEffect(() => {
@@ -77,17 +83,25 @@ export default function FallingLetters() {
   useEffect(() => {
     if (letters.some((l) => l.top >= 580)) {
       setLives((prev) => prev - 1);
+      wrongAudio.current.play();
     }
     if (lives <= 0) {
       setGameOver(true);
+      gameoverAudio.current.play();
     }
   }, [letters, lives]);
 
   const handleLetter = (letter: string) => {
     const idx = letters.findIndex((l) => l.char === letter);
     if (idx === -1) return;
+    const removed = letters[idx];
     setScore((s) => s + 10 * multiplier);
     setMultiplier((m) => m + 1);
+    correctAudio.current.play();
+    setRemovedLetters((prev) => [
+      ...prev,
+      { id: removed.id, top: removed.top, left: Math.random() * 90 },
+    ]);
     setLetters((prev) => prev.filter((_, i) => i !== idx));
   };
 
@@ -115,24 +129,31 @@ export default function FallingLetters() {
         >
           {l.char}
         </div>
-        {!gameOver && (
-          <div className="absolute bottom-0 left-0 right-0 p-2 bg-gray-800/50">
-            <div className="grid grid-cols-13 gap-1 justify-center">
-              {LETTERS.split("").map((c) => (
-                <Button
-                  key={c}
-                  variant="ghost"
-                  size="sm"
-                  className="w-8 h-8"
-                  onClick={() => handleLetter(c)}
-                >
-                  {c}
-                </Button>
-              ))}
-            </div>
-          </div>
-        )}
       ))}
+      {removedLetters.map((r) => (
+        <div
+          key={r.id}
+          className="neon-burst"
+          style={{ top: `${r.top}px`, left: `${r.left}%` }}
+        />
+      ))}
+      {!gameOver && (
+        <div className="absolute bottom-0 left-0 right-0 p-2 bg-gray-800/50">
+          <div className="grid grid-cols-13 gap-1 justify-center">
+            {LETTERS.split("").map((c) => (
+              <Button
+                key={c}
+                variant="ghost"
+                size="sm"
+                className="w-8 h-8"
+                onClick={() => handleLetter(c)}
+              >
+                {c}
+              </Button>
+            ))}
+          </div>
+        </div>
+      )}
       <div className="absolute inset-0 flex flex-col justify-between p-4">
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-1">
