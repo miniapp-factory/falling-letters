@@ -46,3 +46,345 @@
 +```
 +
 +Generate an app logo and update the app metadata title and description.
+
+# 2025-12-01 06:41:46.735485
++"Create a complete and polished mini typing game called “Falling Letters”. Letters fall from the top of the screen, and the player must type them before they reach the bottom. Make the game smooth, responsive, fun, and mobile-friendly.
++
++Provide the following:
++
++1. Overview (More Detailed)
++
++A fast-paced typing reaction game where letters continuously fall from the top. The player must press the correct letter on the keyboard (or tap an on-screen keyboard for mobile) before the letter hits the ground. The game gradually speeds up, making it harder over time. Players earn points, combos, and power-ups.
++
++2. Core Features (Expanded)
++
++Include all of these:
++
++Gameplay Mechanics
++
++Falling letters that spawn at random x-positions
++
++Each correct key press destroys the matching letter
++
++Speed increases every 15–20 seconds
++
++Combo system: higher score when typing correctly multiple times in a row
++
++Lives system (e.g., 3–5 lives) instead of instant game over
++
++Power-ups that appear occasionally (slow motion, freeze, bonus points)
++
++Controls
++
++Full desktop keyboard support
++
++Mobile on-screen keyboard
++
++Only displays letters currently relevant (A–Z)
++
++Responsive layout
++
++Glows when tapping the right letter
++
++Game States
++
++Start Screen
++
++In-Game
++
++Pause Screen
++
++Game Over Screen (with Retry + Home buttons)
++
++3. UI & Visual Effects
++
++Use a modern neon cyber aesthetic:
++
++Visuals
++
++Dark gradient background
++
++Glowing neon falling letters
++
++Letters leave a streak trail behind them
++
++Particles explode when a letter is typed correctly
++
++Shake the screen slightly when a life is lost
++
++UI Elements
++
++Score display
++
++Combo meter
++
++Lives indicator
++
++Difficulty dropdown (Easy / Normal / Hard / Endless)
++
++Power-up icons (show when active)
++
++Mobile keyboard at the bottom (only when needed)
++
++4. Complete User Flow
++
++Describe and implement the full flow:
++
++Start Screen
++
++Title “Falling Letters”
++
++Play button
++
++Difficulty selector
++
++Sound toggle
++
++Instructions button
++
++Countdown
++
++3 → 2 → 1 → GO animation before gameplay starts
++
++Gameplay
++
++Letters fall
++
++Player types or taps
++
++Combo and score update
++
++Lives decrease when a letter reaches bottom
++
++Pause
++
++Pause button in top-left
++
++Options: Resume, Restart, Quit
++
++Game Over Screen
++
++Display score and highest combo
++
++Buttons:
++
++Replay → restarts game with same difficulty
++
++Home → returns to start screen
++
++Share Score (optional)
++
++5. Extra Fun Features
++
++Make the game engaging:
++
++Slow Time Power-Up: slows falling speed for 5 seconds
++
++Freeze Screen Power-Up: temporarily pauses all letters
++
++Bomb Letter: destroys all letters on screen
++
++Combo Flame Effect: letters burn with neon fire when combo is high
++
++Theme Mode: player can switch themes (Neon, Pastel, Cyber Red, Synthwave)
++
++6. Tech Requirements
++
++Web-based
++
++Use keyboard event listeners
++
++On-screen keyboard built with HTML
++
++Game loop using requestAnimationFrame
++
++Responsive for desktop + mobile
++
++Optimized to avoid lag even with many falling letters
++
++7. Stretch Features
++
++Include optional complexity:
++
++Words Mode: instead of letters, full words fall
++
++Challenge Mode: letters fall extremely fast, but only one life
++
++Custom Mode: player can adjust letter speed, spawn rate, and background color
++
++Leaderboard: local or cloud-based
++
++Daily Missions: “Score 500 points”, “Survive 60 seconds”, etc.
++
++"Make sure the final game is functional, polished, fun, and includes all missing buttons (pause, restart, replay, home) as well as a working mobile keyboard."
+
+# 2025-12-01 06:41:46.736032
++"Create a complete and polished mini typing game called “Falling Letters”. Letters fall from the top of the screen, and the player must type them before they reach the bottom. Make the game smooth, responsive, fun, and mobile-friendly.
++
++Provide the following:
++
++1. Overview (More Detailed)
++
++A fast-paced typing reaction game where letters continuously fall from the top. The player must press the correct letter on the keyboard (or tap an on-screen keyboard for mobile) before the letter hits the ground. The game gradually speeds up, making it harder over time. Players earn points, combos, and power-ups.
++
++2. Core Features (Expanded)
++
++Include all of these:
++
++Gameplay Mechanics
++
++Falling letters that spawn at random x-positions
++
++Each correct key press destroys the matching letter
++
++Speed increases every 15–20 seconds
++
++Combo system: higher score when typing correctly multiple times in a row
++
++Lives system (e.g., 3–5 lives) instead of instant game over
++
++Power-ups that appear occasionally (slow motion, freeze, bonus points)
++
++Controls
++
++Full desktop keyboard support
++
++Mobile on-screen keyboard
++
++Only displays letters currently relevant (A–Z)
++
++Responsive layout
++
++Glows when tapping the right letter
++
++Game States
++
++Start Screen
++
++In-Game
++
++Pause Screen
++
++Game Over Screen (with Retry + Home buttons)
++
++3. UI & Visual Effects
++
++Use a modern neon cyber aesthetic:
++
++Visuals
++
++Dark gradient background
++
++Glowing neon falling letters
++
++Letters leave a streak trail behind them
++
++Particles explode when a letter is typed correctly
++
++Shake the screen slightly when a life is lost
++
++UI Elements
++
++Score display
++
++Combo meter
++
++Lives indicator
++
++Difficulty dropdown (Easy / Normal / Hard / Endless)
++
++Power-up icons (show when active)
++
++Mobile keyboard at the bottom (only when needed)
++
++4. Complete User Flow
++
++Describe and implement the full flow:
++
++Start Screen
++
++Title “Falling Letters”
++
++Play button
++
++Difficulty selector
++
++Sound toggle
++
++Instructions button
++
++Countdown
++
++3 → 2 → 1 → GO animation before gameplay starts
++
++Gameplay
++
++Letters fall
++
++Player types or taps
++
++Combo and score update
++
++Lives decrease when a letter reaches bottom
++
++Pause
++
++Pause button in top-left
++
++Options: Resume, Restart, Quit
++
++Game Over Screen
++
++Display score and highest combo
++
++Buttons:
++
++Replay → restarts game with same difficulty
++
++Home → returns to start screen
++
++Share Score (optional)
++
++5. Extra Fun Features
++
++Make the game engaging:
++
++Slow Time Power-Up: slows falling speed for 5 seconds
++
++Freeze Screen Power-Up: temporarily pauses all letters
++
++Bomb Letter: destroys all letters on screen
++
++Combo Flame Effect: letters burn with neon fire when combo is high
++
++Theme Mode: player can switch themes (Neon, Pastel, Cyber Red, Synthwave)
++
++6. Tech Requirements
++
++Web-based
++
++Use keyboard event listeners
++
++On-screen keyboard built with HTML
++
++Game loop using requestAnimationFrame
++
++Responsive for desktop + mobile
++
++Optimized to avoid lag even with many falling letters
++
++7. Stretch Features
++
++Include optional complexity:
++
++Words Mode: instead of letters, full words fall
++
++Challenge Mode: letters fall extremely fast, but only one life
++
++Custom Mode: player can adjust letter speed, spawn rate, and background color
++
++Leaderboard: local or cloud-based
++
++Daily Missions: “Score 500 points”, “Survive 60 seconds”, etc.
++
++"Make sure the final game is functional, polished, fun, and includes all missing buttons (pause, restart, replay, home) as well as a working mobile keyboard."
