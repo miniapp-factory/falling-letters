@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
 import { useRouter } from "next/navigation";
 
+const correctAudio = useRef(new Audio('/correct.mp3'));
+const wrongAudio = useRef(new Audio('/wrong.mp3'));
+const gameoverAudio = useRef(new Audio('/gameover.mp3'));
 const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 type Letter = {
@@ -60,6 +63,13 @@ export default function FallingLetters() {
     return () => clearInterval(animation);
   }, [gameOver, paused]);
 
+  // Increase speed multiplier over time
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSpeedMultiplier((s) => Math.min(s + 0.05, 2));
+    }, 10000);
+    return () => clearInterval(timer);
+  }, []);
   // Keyboard handling
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
