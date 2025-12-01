@@ -394,3 +394,117 @@
 
 # 2025-12-01 06:55:38.299031
 +add keyboard button for typing the letters and add replay button and add scoreboard for showing the score you got when the game is over 
+
+# 2025-12-01 07:10:27.005743
++Create a simple mobile typing game called Falling Letters. Letters fall from the top of the screen, and the player must tap letters on an on-screen keyboard to destroy them before they reach the bottom.
++
++Include:
++
++Overview: Mobile typing/reflex game with increasing speed.
++
++Gameplay:
++
++One letter falls at a time.
++
++Player taps the matching letter on the on-screen keyboard.
++
++Correct tap removes the letter and adds score.
++
++Missing a letter removes a life.
++
++UI:
++
++Dark background
++
++Bright neon falling letters
++
++Clean, centered layout
++
++Touch-friendly on-screen keyboard
++
++Main Features:
++
++Score + combo multiplier
++
++3 lives (heart icons)
++
++Increasing fall speed
++
++Simple sound effects (correct, wrong, game over)
++
++Neon burst animation when a letter is destroyed
++
++Pause button
++
++Game Over Screen:
++
++Show final score
++
++Replay button (must restart the game fully)
++
++Home button
++
++Practice Mode:
++
++Optional slower mode for beginners
++
++Flow: Home → Play → Game Over → Replay/Home.
++
++Keep it simple, mobile-optimized, fun, and visually engaging.”
+
+# 2025-12-01 07:10:27.006128
++Create a simple mobile typing game called Falling Letters. Letters fall from the top of the screen, and the player must tap letters on an on-screen keyboard to destroy them before they reach the bottom.
++
++Include:
++
++Overview: Mobile typing/reflex game with increasing speed.
++
++Gameplay:
++
++One letter falls at a time.
++
++Player taps the matching letter on the on-screen keyboard.
++
++Correct tap removes the letter and adds score.
++
++Missing a letter removes a life.
++
++UI:
++
++Dark background
++
++Bright neon falling letters
++
++Clean, centered layout
++
++Touch-friendly on-screen keyboard
++
++Main Features:
++
++Score + combo multiplier
++
++3 lives (heart icons)
++
++Increasing fall speed
++
++Simple sound effects (correct, wrong, game over)
++
++Neon burst animation when a letter is destroyed
++
++Pause button
++
++Game Over Screen:
++
++Show final score
++
++Replay button (must restart the game fully)
++
++Home button
++
++Practice Mode:
++
++Optional slower mode for beginners
++
++Flow: Home → Play → Game Over → Replay/Home.
++
++Keep it simple, mobile-optimized, fun, and visually engaging.”
