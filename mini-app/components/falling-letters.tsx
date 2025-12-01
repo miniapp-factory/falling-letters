@@ -2,6 +2,9 @@
 
 import { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Heart } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -17,7 +20,10 @@ export default function FallingLetters() {
   const [score, setScore] = useState(0);
   const [multiplier, setMultiplier] = useState(1);
   const [gameOver, setGameOver] = useState(false);
+  const [lives, setLives] = useState(3);
+  const [paused, setPaused] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const idRef = useRef(0);
 
   // Spawn a new letter every 800ms
@@ -33,7 +39,7 @@ export default function FallingLetters() {
       setLetters((prev) => [...prev, newLetter]);
     }, 800);
     return () => clearInterval(interval);
-  }, [gameOver]);
+  }, [gameOver, paused]);
 
   // Move letters
   useEffect(() => {
@@ -46,7 +52,7 @@ export default function FallingLetters() {
       );
     }, 30);
     return () => clearInterval(animation);
-  }, [gameOver]);
+  }, [gameOver, paused]);
 
   // Keyboard handling
   useEffect(() => {
@@ -74,6 +80,14 @@ export default function FallingLetters() {
     }
   }, [letters]);
 
+  const handleLetter = (letter: string) => {
+    const idx = letters.findIndex((l) => l.char === letter);
+    if (idx === -1) return;
+    setScore((s) => s + 10 * multiplier);
+    setMultiplier((m) => m + 1);
+    setLetters((prev) => prev.filter((_, i) => i !== idx));
+  };
+
   return (
     <div
       ref={containerRef}
@@ -90,6 +104,23 @@ export default function FallingLetters() {
         >
           {l.char}
         </div>
+        {!gameOver && (
+          <div className="absolute bottom-0 left-0 right-0 p-2 bg-gray-800/50">
+            <div className="grid grid-cols-13 gap-1 justify-center">
+              {LETTERS.split("").map((c) => (
+                <Button
+                  key={c}
+                  variant="ghost"
+                  size="sm"
+                  className="w-8 h-8"
+                  onClick={() => handleLetter(c)}
+                >
+                  {c}
+                </Button>
+              ))}
+            </div>
+          </div>
+        )}
       ))}
       <div className="absolute inset-0 flex flex-col justify-between p-4">
         <div className="text-white text-lg">
